@@ -48,8 +48,8 @@ class IOUMetric:
 
 
 if __name__ == '__main__':
-    mask_path = '../dataset/test/public/ISPRS2DSemanticLabelingContestVaihingen/20230919/masks'
-    predict_path = '../results/public/ISPRS2DSemanticLabelingContestVaihingen/20230919/1m/build/build202305211733'
+    mask_path = '../dataset/test/masks'
+    predict_path = '../results'
     pres = glob.glob(os.path.join(predict_path, '*.tif'))  # os.listdir(predict_path)
     masks = []
     predicts = []
