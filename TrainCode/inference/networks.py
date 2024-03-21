@@ -13,8 +13,6 @@ import torch
 from torch import nn
 from torchvision import models
 
-from inference.models.resnet_ibn import *
-
 try:
     from osgeo import gdal
     from osgeo import ogr
