@@ -22,6 +22,9 @@ except ImportError:
     import ogr
     import osr
 
+from functools import partial
+
+relu_func = partial(F.relu, inplace=True)
 
 
 class UNetR50(nn.Module):
