@@ -81,27 +81,3 @@ class SELayer(nn.Module):
         x = self.conv2(x)
         x = self.sigmoid(x)
         return module_input * x
-
-
-
-    def __init__(self, no_spatial = False):
-        super(InteractiveAttentionLayer, self).__init__()
-        self.cw = InteractiveAttentionGate()
-        self.hc = InteractiveAttentionGate()
-        self.no_spatial = no_spatial
-        if not no_spatial:
-            self.hw = InteractiveAttentionGate()
-
-    def forward(self, x):
-        x_cw = x.permute(0, 2, 1, 3).contiguous()
-        x_out_cw = self.cw(x_cw)
-        x_out_cw = x_out_cw.permute(0, 2, 1, 3).contiguous()
-        x_hc = x.permute(0, 3, 2, 1).contiguous()
-        x_out_hc = self.hc(x_hc)
-        x_out_hc = x_out_hc.permute(0, 3, 2, 1).contiguous()
-        if not self.no_spatial:
-            x_out = self.hw(x)
-            x_out = 1 / 3 * (x_out + x_out_cw + x_out_hc)
-        else:
-            x_out = 1 / 2 * (x_out_cw + x_out_hc)
-        return x_out
