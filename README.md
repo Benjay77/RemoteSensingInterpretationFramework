@@ -1,2 +1,2 @@
-# RemoteSensingInterpretationFramework
-the framework of Remote Sensing Interpretation
+# SemanticSegmentation-Framework
+the framework of Semantic Segmentation
